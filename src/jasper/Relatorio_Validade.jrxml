@@ -1,0 +1,583 @@
+<?xml version="1.0" encoding="UTF-8"  ?>
+<!-- Created with iReport - A designer for JasperReports -->
+<!DOCTYPE jasperReport PUBLIC "//JasperReports//DTD Report Design//EN" "http://jasperreports.sourceforge.net/dtds/jasperreport.dtd">
+<jasperReport
+		 name="Relatorio_Validade"
+		 columnCount="1"
+		 printOrder="Vertical"
+		 orientation="Landscape"
+		 pageWidth="842"
+		 pageHeight="595"
+		 columnWidth="782"
+		 columnSpacing="0"
+		 leftMargin="30"
+		 rightMargin="30"
+		 topMargin="20"
+		 bottomMargin="20"
+		 whenNoDataType="NoPages"
+		 isTitleNewPage="false"
+		 isSummaryNewPage="false">
+	<property name="ireport.scriptlethandling" value="0" />
+	<property name="ireport.encoding" value="UTF-8" />
+	<import value="java.util.*" />
+	<import value="net.sf.jasperreports.engine.*" />
+	<import value="net.sf.jasperreports.engine.data.*" />
+
+	<parameter name="ID_LAB" isForPrompting="false" class="java.lang.String"/>
+	<parameter name="DATA_INI" isForPrompting="false" class="java.util.Date"/>
+	<parameter name="DATA_FIM" isForPrompting="false" class="java.util.Date"/>
+	<queryString><![CDATA[SELECT
+     mov_det.`ID_MOV_DET` AS mov_det_ID_MOV_DET,
+     mov_det.`ID_CAD_LOTES` AS mov_det_ID_CAD_LOTES,
+     mov_det.`NOME_REAGENTE` AS mov_det_NOME_REAGENTE,
+     mov_det.`COD_PLANILHA` AS mov_det_COD_PLANILHA,
+     mov_det.`TIPO_REAGENTE` AS mov_det_TIPO_REAGENTE,
+     mov_det.`CONCENTRACAO` AS mov_det_CONCENTRACAO,
+     mov_det.`INCOMPAT` AS mov_det_INCOMPAT,
+     mov_det.`FABRICANTE` AS mov_det_FABRICANTE,
+     mov_det.`TIPO_UND` AS mov_det_TIPO_UND,
+     mov_det.`QUANT_UND` AS mov_det_QUANT_UND,
+     mov_det.`FLAG_FRACIONADO` AS mov_det_FLAG_FRACIONADO,
+     mov_det.`FLAG_REAGENTE` AS mov_det_FLAG_REAGENTE,
+     mov_det.`STATUS_REAGENTE` AS mov_det_STATUS_REAGENTE,
+     mov_det.`NUMERO_NOTA` AS mov_det_NUMERO_NOTA,
+     mov_det.`SERIE_NOTA` AS mov_det_SERIE_NOTA,
+     mov_det.`DATA_COMPRA` AS mov_det_DATA_COMPRA,
+     mov_det.`DATA_VALIDADE` AS mov_det_DATA_VALIDADE,
+     mov_det.`FORNECEDOR` AS mov_det_FORNECEDOR,
+     mov_det.`DATA_NOTA` AS mov_det_DATA_NOTA,
+     mov_det.`NUMERO_LOTE` AS mov_det_NUMERO_LOTE,
+     mov_det.`SERIE_LOTE` AS mov_det_SERIE_LOTE,
+     mov_det.`ESTOQUE1` AS mov_det_ESTOQUE1,
+     mov_det.`ESTOQUE2` AS mov_det_ESTOQUE2,
+     mov_det.`ESTOQUE3` AS mov_det_ESTOQUE3,
+     mov_det.`LOCALIZACAO` AS mov_det_LOCALIZACAO,
+     mov_det.`SALA` AS mov_det_SALA,
+     mov_det.`ID_ESTOQUE` AS mov_det_ID_ESTOQUE,
+     mov_det.`ID_LOCALIZACAO` AS mov_det_ID_LOCALIZACAO,
+     mov_det.`ID_USUARIO_EMPRESTIMO` AS mov_det_ID_USUARIO_EMPRESTIMO,
+     mov_det.`EMPRESTADO_POR` AS mov_det_EMPRESTADO_POR,
+     mov_det.`DATA_EMPRESTIMO` AS mov_det_DATA_EMPRESTIMO,
+     mov_det.`HORA_EMPRESTIMO` AS mov_det_HORA_EMPRESTIMO,
+     mov_det.`EMPRESTADO_PARA` AS mov_det_EMPRESTADO_PARA,
+     mov_det.`EMP_CONTATO_ID_MVD` AS mov_det_EMP_CONTATO_ID_MVD,
+     mov_det.`EMP_LAB_MVD` AS mov_det_EMP_LAB_MVD,
+     mov_det.`EMP_LAB_ID_MVD` AS mov_det_EMP_LAB_ID_MVD,
+     mov_det.`EMP_RESPONSAVEL_MVD` AS mov_det_EMP_RESPONSAVEL_MVD,
+     mov_det.`EMP_DEP_MVD` AS mov_det_EMP_DEP_MVD,
+     mov_det.`EMP_LOCALIZACAO_MVD` AS mov_det_EMP_LOCALIZACAO_MVD,
+     mov_det.`EMP_SALA_MVD` AS mov_det_EMP_SALA_MVD,
+     mov_det.`EMP_LAB_TEL_MVD` AS mov_det_EMP_LAB_TEL_MVD,
+     mov_det.`EMP_CONTATO_TEL_MVD` AS mov_det_EMP_CONTATO_TEL_MVD,
+     mov_det.`EMP_OBS_MVD` AS mov_det_EMP_OBS_MVD,
+     mov_det.`EMP_VINCULACAO_MVD` AS mov_det_EMP_VINCULACAO_MVD,
+     mov_det.`OBS` AS mov_det_OBS,
+     mov_det.`FLAG_EMPRESTIMO` AS mov_det_FLAG_EMPRESTIMO,
+     mov_det.`DEVOL_AGENDADA` AS mov_det_DEVOL_AGENDADA,
+     mov_det.`DATA_DEVOL` AS mov_det_DATA_DEVOL,
+     mov_det.`HORA_DEVOL` AS mov_det_HORA_DEVOL,
+     mov_det.`AUTORIZADO_POR` AS mov_det_AUTORIZADO_POR,
+     mov_det.`USUARIO_EMPRESTIMO` AS mov_det_USUARIO_EMPRESTIMO,
+     mov_det.`ID_USUARIO_DEVOLUCAO` AS mov_det_ID_USUARIO_DEVOLUCAO,
+     mov_det.`USUARIO_DEVOLUCAO` AS mov_det_USUARIO_DEVOLUCAO,
+     mov_det.`STATUS_REAGENTE_UND` AS mov_det_STATUS_REAGENTE_UND,
+     mov_det.`FLAG_REAGENTE_UND` AS mov_det_FLAG_REAGENTE_UND,
+     mov_det.`COD_QRESTOQUE` AS mov_det_COD_QRESTOQUE,
+     mov_det.`COD_QREAGENTE` AS mov_det_COD_QREAGENTE,
+     mov_det.`COD_BAR` AS mov_det_COD_BAR,
+     mov_det.`USUARIO_DESCARTE` AS mov_det_USUARIO_DESCARTE,
+     mov_det.`ID_USUARIO_DESCARTE` AS mov_det_ID_USUARIO_DESCARTE,
+     mov_det.`DATA_DESCARTE` AS mov_det_DATA_DESCARTE,
+     mov_det.`HORA_DESCARTE` AS mov_det_HORA_DESCARTE,
+     mov_det.`ID_FORNECEDOR` AS mov_det_ID_FORNECEDOR,
+     mov_det.`ID_REAGENTE` AS mov_det_ID_REAGENTE,
+     mov_det.`STATUS_ABERTURA` AS mov_det_STATUS_ABERTURA,
+     mov_det.`FLAG_ABERTURA` AS mov_det_FLAG_ABERTURA,
+     mov_det.`HORA_ABERTURA` AS mov_det_HORA_ABERTURA,
+     mov_det.`DATA_ABERTURA` AS mov_det_DATA_ABERTURA,
+     mov_det.`ID_US_ABERTURA` AS mov_det_ID_US_ABERTURA,
+     mov_det.`FLAG_DESCARTE` AS mov_det_FLAG_DESCARTE,
+     mov_det.`USUARIO_ABERTURA` AS mov_det_USUARIO_ABERTURA,
+     mov_det.`DATA_ENTRADA_ESTOQUE` AS mov_det_DATA_ENTRADA_ESTOQUE,
+     mov_det.`STATUS_LOTE` AS mov_det_STATUS_LOTE,
+     mov_det.`FLAG_LOTE` AS mov_det_FLAG_LOTE,
+     mov_det.`ID_LAB` AS mov_det_ID_LAB,
+     mov_det.`ID_USUARIO` AS mov_det_ID_USUARIO,
+     mov_det.`LABORATORIO` AS mov_det_LABORATORIO,
+     mov_det.`USUARIO_CADASTRO` AS mov_det_USUARIO_CADASTRO
+FROM
+     `mov_det` mov_det
+WHERE 
+mov_det.`ID_LAB` = $P{ID_LAB}
+AND
+mov_det.`DATA_VALIDADE` BETWEEN $P{DATA_INI} AND $P{DATA_FIM}]]></queryString>
+
+	<field name="mov_det_ID_MOV_DET" class="java.lang.Integer"/>
+	<field name="mov_det_ID_CAD_LOTES" class="java.lang.Integer"/>
+	<field name="mov_det_NOME_REAGENTE" class="java.lang.String"/>
+	<field name="mov_det_COD_PLANILHA" class="java.lang.String"/>
+	<field name="mov_det_TIPO_REAGENTE" class="java.lang.String"/>
+	<field name="mov_det_CONCENTRACAO" class="java.lang.String"/>
+	<field name="mov_det_INCOMPAT" class="java.lang.String"/>
+	<field name="mov_det_FABRICANTE" class="java.lang.String"/>
+	<field name="mov_det_TIPO_UND" class="java.lang.String"/>
+	<field name="mov_det_QUANT_UND" class="java.lang.Double"/>
+	<field name="mov_det_FLAG_FRACIONADO" class="java.lang.String"/>
+	<field name="mov_det_FLAG_REAGENTE" class="java.lang.String"/>
+	<field name="mov_det_STATUS_REAGENTE" class="java.lang.String"/>
+	<field name="mov_det_NUMERO_NOTA" class="java.lang.String"/>
+	<field name="mov_det_SERIE_NOTA" class="java.lang.String"/>
+	<field name="mov_det_DATA_COMPRA" class="java.sql.Date"/>
+	<field name="mov_det_DATA_VALIDADE" class="java.sql.Date"/>
+	<field name="mov_det_FORNECEDOR" class="java.lang.String"/>
+	<field name="mov_det_DATA_NOTA" class="java.sql.Date"/>
+	<field name="mov_det_NUMERO_LOTE" class="java.lang.String"/>
+	<field name="mov_det_SERIE_LOTE" class="java.lang.String"/>
+	<field name="mov_det_ESTOQUE1" class="java.lang.String"/>
+	<field name="mov_det_ESTOQUE2" class="java.lang.String"/>
+	<field name="mov_det_ESTOQUE3" class="java.lang.String"/>
+	<field name="mov_det_LOCALIZACAO" class="java.lang.String"/>
+	<field name="mov_det_SALA" class="java.lang.String"/>
+	<field name="mov_det_ID_ESTOQUE" class="java.lang.String"/>
+	<field name="mov_det_ID_LOCALIZACAO" class="java.lang.String"/>
+	<field name="mov_det_ID_USUARIO_EMPRESTIMO" class="java.lang.String"/>
+	<field name="mov_det_EMPRESTADO_POR" class="java.lang.String"/>
+	<field name="mov_det_DATA_EMPRESTIMO" class="java.sql.Date"/>
+	<field name="mov_det_HORA_EMPRESTIMO" class="java.lang.String"/>
+	<field name="mov_det_EMPRESTADO_PARA" class="java.lang.String"/>
+	<field name="mov_det_EMP_CONTATO_ID_MVD" class="java.lang.String"/>
+	<field name="mov_det_EMP_LAB_MVD" class="java.lang.String"/>
+	<field name="mov_det_EMP_LAB_ID_MVD" class="java.lang.String"/>
+	<field name="mov_det_EMP_RESPONSAVEL_MVD" class="java.lang.String"/>
+	<field name="mov_det_EMP_DEP_MVD" class="java.lang.String"/>
+	<field name="mov_det_EMP_LOCALIZACAO_MVD" class="java.lang.String"/>
+	<field name="mov_det_EMP_SALA_MVD" class="java.lang.String"/>
+	<field name="mov_det_EMP_LAB_TEL_MVD" class="java.lang.String"/>
+	<field name="mov_det_EMP_CONTATO_TEL_MVD" class="java.lang.String"/>
+	<field name="mov_det_EMP_OBS_MVD" class="java.lang.String"/>
+	<field name="mov_det_EMP_VINCULACAO_MVD" class="java.lang.String"/>
+	<field name="mov_det_OBS" class="java.lang.String"/>
+	<field name="mov_det_FLAG_EMPRESTIMO" class="java.lang.String"/>
+	<field name="mov_det_DEVOL_AGENDADA" class="java.sql.Date"/>
+	<field name="mov_det_DATA_DEVOL" class="java.sql.Date"/>
+	<field name="mov_det_HORA_DEVOL" class="java.lang.String"/>
+	<field name="mov_det_AUTORIZADO_POR" class="java.lang.String"/>
+	<field name="mov_det_USUARIO_EMPRESTIMO" class="java.lang.String"/>
+	<field name="mov_det_ID_USUARIO_DEVOLUCAO" class="java.lang.String"/>
+	<field name="mov_det_USUARIO_DEVOLUCAO" class="java.lang.String"/>
+	<field name="mov_det_STATUS_REAGENTE_UND" class="java.lang.String"/>
+	<field name="mov_det_FLAG_REAGENTE_UND" class="java.lang.Integer"/>
+	<field name="mov_det_COD_QRESTOQUE" class="java.lang.String"/>
+	<field name="mov_det_COD_QREAGENTE" class="java.lang.String"/>
+	<field name="mov_det_COD_BAR" class="java.lang.String"/>
+	<field name="mov_det_USUARIO_DESCARTE" class="java.lang.String"/>
+	<field name="mov_det_ID_USUARIO_DESCARTE" class="java.lang.String"/>
+	<field name="mov_det_DATA_DESCARTE" class="java.sql.Date"/>
+	<field name="mov_det_HORA_DESCARTE" class="java.lang.String"/>
+	<field name="mov_det_ID_FORNECEDOR" class="java.lang.String"/>
+	<field name="mov_det_ID_REAGENTE" class="java.lang.String"/>
+	<field name="mov_det_STATUS_ABERTURA" class="java.lang.String"/>
+	<field name="mov_det_FLAG_ABERTURA" class="java.lang.String"/>
+	<field name="mov_det_HORA_ABERTURA" class="java.lang.String"/>
+	<field name="mov_det_DATA_ABERTURA" class="java.sql.Date"/>
+	<field name="mov_det_ID_US_ABERTURA" class="java.lang.String"/>
+	<field name="mov_det_FLAG_DESCARTE" class="java.lang.String"/>
+	<field name="mov_det_USUARIO_ABERTURA" class="java.lang.String"/>
+	<field name="mov_det_DATA_ENTRADA_ESTOQUE" class="java.sql.Date"/>
+	<field name="mov_det_STATUS_LOTE" class="java.lang.String"/>
+	<field name="mov_det_FLAG_LOTE" class="java.lang.String"/>
+	<field name="mov_det_ID_LAB" class="java.lang.String"/>
+	<field name="mov_det_ID_USUARIO" class="java.lang.String"/>
+	<field name="mov_det_LABORATORIO" class="java.lang.String"/>
+	<field name="mov_det_USUARIO_CADASTRO" class="java.lang.String"/>
+
+		<background>
+			<band height="0"  isSplitAllowed="true" >
+			</band>
+		</background>
+		<title>
+			<band height="30"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="0"
+						y="3"
+						width="782"
+						height="23"
+						key="staticText-1"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font pdfFontName="Times-Bold" size="18" isBold="true" isUnderline="true" isPdfEmbedded ="true" isStrikeThrough="false" />
+					</textElement>
+				<text><![CDATA[Laboratório de Proteômica Biomolécula e Preteínas ]]></text>
+				</staticText>
+			</band>
+		</title>
+		<pageHeader>
+			<band height="30"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="0"
+						y="0"
+						width="782"
+						height="26"
+						key="staticText-2"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font size="16"/>
+					</textElement>
+				<text><![CDATA[Relatório de Reagentes em Vencimento]]></text>
+				</staticText>
+			</band>
+		</pageHeader>
+		<columnHeader>
+			<band height="20"  isSplitAllowed="true" >
+				<staticText>
+					<reportElement
+						x="0"
+						y="2"
+						width="77"
+						height="16"
+						key="staticText-3"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<text><![CDATA[COD. SISTEMA
+]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="0"
+						y="2"
+						width="77"
+						height="16"
+						key="staticText-3"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<text><![CDATA[COD. SISTEMA
+]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="83"
+						y="2"
+						width="100"
+						height="16"
+						key="staticText-4"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<text><![CDATA[NOME REAGENTE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="191"
+						y="2"
+						width="47"
+						height="16"
+						key="staticText-5"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<text><![CDATA[TIPO]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="244"
+						y="2"
+						width="31"
+						height="16"
+						key="staticText-6"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<text><![CDATA[UND]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="280"
+						y="2"
+						width="37"
+						height="16"
+						key="staticText-7"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<text><![CDATA[QUANT.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="320"
+						y="2"
+						width="76"
+						height="16"
+						key="staticText-8"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<text><![CDATA[COD. COMPRA]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="404"
+						y="2"
+						width="45"
+						height="15"
+						key="staticText-9"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<text><![CDATA[LOCAL]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="451"
+						y="2"
+						width="31"
+						height="16"
+						key="staticText-10"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<text><![CDATA[SALA]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="487"
+						y="2"
+						width="100"
+						height="18"
+						key="staticText-11"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<text><![CDATA[NOME ESTOQUE]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="595"
+						y="2"
+						width="54"
+						height="16"
+						key="staticText-12"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<text><![CDATA[TIPO EST.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="662"
+						y="1"
+						width="33"
+						height="18"
+						key="staticText-13"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<text><![CDATA[DET.]]></text>
+				</staticText>
+				<staticText>
+					<reportElement
+						x="701"
+						y="2"
+						width="72"
+						height="17"
+						key="staticText-14"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<text><![CDATA[DATA VALIDADE]]></text>
+				</staticText>
+			</band>
+		</columnHeader>
+		<detail>
+			<band height="20"  isSplitAllowed="true" >
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="83"
+						y="2"
+						width="100"
+						height="18"
+						key="textField"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{mov_det_NOME_REAGENTE}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="191"
+						y="2"
+						width="47"
+						height="18"
+						key="textField"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{mov_det_TIPO_REAGENTE}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="244"
+						y="2"
+						width="31"
+						height="18"
+						key="textField"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{mov_det_TIPO_UND}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" pattern="##0.00" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="280"
+						y="2"
+						width="37"
+						height="18"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.Double"><![CDATA[$F{mov_det_QUANT_UND}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="320"
+						y="2"
+						width="76"
+						height="18"
+						key="textField"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{mov_det_COD_PLANILHA}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="403"
+						y="2"
+						width="46"
+						height="18"
+						key="textField"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{mov_det_LOCALIZACAO}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="487"
+						y="2"
+						width="100"
+						height="18"
+						key="textField"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{mov_det_ESTOQUE1}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="595"
+						y="2"
+						width="54"
+						height="18"
+						key="textField"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{mov_det_ESTOQUE2}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="662"
+						y="2"
+						width="33"
+						height="18"
+						key="textField"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{mov_det_ESTOQUE3}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="454"
+						y="2"
+						width="24"
+						height="18"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{mov_det_SALA}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="701"
+						y="2"
+						width="72"
+						height="18"
+						key="textField"/>
+					<box></box>
+					<textElement textAlignment="Center">
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.util.Date"><![CDATA[$F{mov_det_DATA_VALIDADE}]]></textFieldExpression>
+				</textField>
+				<textField isStretchWithOverflow="false" isBlankWhenNull="false" evaluationTime="Now" hyperlinkType="None"  hyperlinkTarget="Self" >
+					<reportElement
+						x="0"
+						y="2"
+						width="77"
+						height="18"
+						key="textField"/>
+					<box></box>
+					<textElement>
+						<font/>
+					</textElement>
+				<textFieldExpression   class="java.lang.String"><![CDATA[$F{mov_det_COD_BAR}]]></textFieldExpression>
+				</textField>
+			</band>
+		</detail>
+		<columnFooter>
+			<band height="30"  isSplitAllowed="true" >
+			</band>
+		</columnFooter>
+		<pageFooter>
+			<band height="50"  isSplitAllowed="true" >
+			</band>
+		</pageFooter>
+		<lastPageFooter>
+			<band height="50"  isSplitAllowed="true" >
+			</band>
+		</lastPageFooter>
+		<summary>
+			<band height="50"  isSplitAllowed="true" >
+			</band>
+		</summary>
+</jasperReport>

@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<persistence version="1.0" xmlns="http://java.sun.com/xml/ns/persistence" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://java.sun.com/xml/ns/persistence http://java.sun.com/xml/ns/persistence/persistence_1_0.xsd">
+  <persistence-unit name="fenyx?zeroDateTimeBehavior=convertToNullPU" transaction-type="RESOURCE_LOCAL">
+    <provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
+    <class>sislab.proteomica.beans.Fornecedor</class>
+    <class>sislab.proteomica.beans.Reagente</class>
+    <class>sislab.proteomica.beans.ComposicaoCab</class>
+    <class>sislab.proteomica.beans.ComposicaoDet</class>
+    <class>sislab.proteomica.beans.Fabricante</class>
+    <class>sislab.proteomica.beans.CadLaboratorio</class>
+    <class>sislab.proteomica.beans.CadLocalizacao</class>
+    <class>sislab.proteomica.beans.PcsCadastrados</class>
+    <class>sislab.proteomica.beans.CadUsuario</class>
+    <class>sislab.proteomica.beans.CadastroIconpatibilidade</class>
+    <class>sislab.proteomica.view.estoque.CadEstoque</class>
+    <class>sislab.proteomica.view.estoque.NomeEstoque</class>
+    <class>sislab.proteomica.view.estoque.TipoEstoque</class>
+    <class>sislab.proteomica.beans.MovInvent</class>
+    <class>sislab.proteomica.beans.MovInventario</class>
+    <class>sislab.proteomica.view.movimento.Movidet</class>
+    <class>sislab.proteomica.view.movimento.Movicab</class>
+    <class>sislab.proteomica.view.movimento.Estmateriais</class>
+    <class>sislab.proteomica.inventario.EmprestimoInventario</class>
+    <class>sislab.proteomica.inventario.Inventario</class>
+    <class>sislab.proteomica.movimento.materiais.Cadnotas</class>
+    <class>sislab.proteomica.pds.Pds</class>
+    <class>sislab.proteomica.pds.ContatoPds</class>
+    <class>sislab.proteomica.movimento.materiais.Cabmat</class>
+    <class>sislab.proteomica.movimento.materiais.Detmat</class>
+    <class>sislab.proteomica.view.lotesNotas.CadastroProjetosDet</class>
+    <class>sislab.proteomica.view.lotesNotas.CadastroProjetosCab</class>
+    <class>sislab.proteomica.projetos.CadastroProjetosDet</class>
+    <class>sislab.proteomica.projetos.CadastroProjetosCab</class>
+    <class>sislab.proteomica.projetos.DetReaDet</class>
+    <class>sislab.proteomica.projetos.DetMatProj</class>
+    <class>sislab.proteomica.materiais.CadMateriais</class>
+    <class>sislab.proteomica.materiais.CadNotaDet</class>
+    <class>sislab.proteomica.materiais.CadNotas</class>
+    <class>sislab.proteomica.materiais.CadNotamatCab</class>
+    <class>sislab.proteomica.materiais.CadNotamatDet</class>
+    <class>sislab.proteomica.saidaProjetos.CadastroProjetosCab</class>
+    <class>sislab.proteomica.saidaProjetos.DetReaDet</class>
+    <class>sislab.proteomica.saidaProjetos.DetMatProj</class>
+    <class>sislab.proteomica.saidaProjetos.Cap</class>
+    <class>sislab.proteomica.saidaProjetos.CadastroProjetosDet</class>
+    <class>sislab.proteomica.view.movimento.MovDet</class>
+    <class>sislab.proteomica.view.lotesNotas.CadLotes</class>
+    <class>sislab.proteomica.solucoes.CompCap</class>
+    <class>sislab.proteomica.solucoes.ComDet</class>
+    <class>sislab.proteomica.metprot.CadMetodologia</class>
+    <class>sislab.proteomica.metprot.CadProtocolo</class>
+    <class>sislab.proteomica.metprot.CadFormulaProt</class>
+    <class>sislab.proteomica.metprot.Metodologia</class>
+    <class>sislab.proteomica.metprot.Etapas</class>
+    <class>sislab.proteomica.metprot.Protocolos</class>
+    <class>sislab.proteomica.metprot.FormulacaoProt</class>
+    <class>sislab.proteomica.metprot.CadProtocoloDet</class>
+    <class>sislab.proteomica.metprot.CadEstprot</class>
+    <class>sislab.proteomica.metprot.metodologias.CadMetodologias</class>
+    <class>sislab.proteomica.metprot.etapas.CadEtapas</class>
+    <class>sislab.proteomica.metprot.caderno.CadernoProt</class>
+    <class>sislab.proteomica.metprot.protocolos.CadProtdet</class>
+    <class>sislab.proteomica.metprot.protocolos.CadProtcab</class>
+    <class>sislab.proteomica.metprot.estoqueProtocolo.CadEstprotcab2</class>
+    <class>sislab.proteomica.metprot.estoqueProtocolo.CadEstprotdet</class>
+    <class>sislab.proteomica.inventario.TiposInventario</class>
+    <class>sislab.proteomica.Segurança.PcsCadastrados</class>
+    <class>sislab.proteomica.inventario.MoveisLab</class>
+    <class>sislab.proteomica.inventario.FreezerGel</class>
+    <class>sislab.proteomica.engine.RuleThrees</class>
+    <properties>
+      <property name="javax.persistence.jdbc.url" value="jdbc:mysql://localhost:3306/fenyx?zeroDateTimeBehavior=convertToNull"/>
+      <property name="javax.persistence.jdbc.user" value="root"/>
+      <property name="javax.persistence.jdbc.driver" value="com.mysql.jdbc.Driver"/>
+      <property name="javax.persistence.jdbc.password" value="admin"/>
+    </properties>
+  </persistence-unit>
+</persistence>
